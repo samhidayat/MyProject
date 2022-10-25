@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <base target="_top" />
+     <h2>Cetak Data Lembaga</h2>
+<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+     <style>
+input{
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+table {
+  font-family: times;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+td, th {
+  border: 1px solid #969696;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f0efef;
+}
+</style>
+  </head>
+  <body align="center">
+    <input type="text"id="id" placeholder="Masukkan NSM"/>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Lihat Data" onclick="info()"/>
+    <center>
+   <div id='PrintDiv'> 
+    <div id="result"></div>
+    </center>
+    <script>
+      function  info () {
+        let obj = document.querySelector('#id').value;
+        let updateLocation = document.querySelector('#result');
+        updateLocation.innerHTML = "Mencari...";
+
+        function onFailure(error){
+          let warning = "<span style='color:red'>"+error+"</span>";
+          updateLocation.innerHTML = warning;
+        };
+        
+        function onSuccess(response){
+          let result ="<span style='color:#000;'>"+response+"</span>";
+          updateLocation.innerHTML = result;
+        };
+        google.script.run.withFailureHandler(onFailure)
+                         .withSuccessHandler(onSuccess)
+                         .submitData(obj);
+      };
+    </script>
+     <script>
+   function Print(DivID) {
+   var iPrint = document.getElementById(DivID).innerHTML;
+   var docprint=window.open("","");
+   docprint.document.open();
+   docprint.document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"');
+   docprint.document.write('<head><meta name="viewport" content="width=device-width,initial-scale=1.0">');
+   docprint.document.write('<title>Cetak Profil Lembaga</title>');
+   docprint.document.write('<style type="text/css">@page {size:auto;margin:5.2em;}');
+   docprint.document.write('table,td{ border:0px solid grey;}</style>');
+   docprint.document.write('</head><body onLoad="self.print()">');
+   docprint.document.write(iPrint);
+   docprint.document.write('</body></html>');
+   docprint.document.close();
+   docprint.focus();
+}
+</script> 
+<input type="button" class="btn btn-secondary" name="btnprint" value="PRINT" onclick="Print('PrintDiv')"style="width:40%">
+    </div>
+  </body>
+</html>
