@@ -1,0 +1,94 @@
+// (cek line 62 DataTable Lengkapi formulir aplikasi web input
+// (cek line 381 file index untuk buka pilih versi 19 dan tutup pilih versi 15
+function doGet() {
+  return HtmlService.createTemplateFromFile('DataTable')
+    .evaluate()
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+}
+function saveData(obj) {
+  var bdate = obj.data7.split("-")
+  var idDate = LanguageApp.translate(Utilities.formatDate(new Date(bdate[0],parseInt(bdate[1])-1,parseInt(bdate[2])),'GMT+07:00','dd MMMM yyyy'),'en','id').split('-').map((a,i) =>{if(i != 2 || parseInt(a)>2100){return a}; a = parseInt(a)+0; return a}).join(' ')
+  var folder = DriveApp.getFolderById("14iQyQcW9S53vqjJQCEFJ2rkzNY5R71Dx"); //ubah ke id folder berkas
+  var file, file1, file2, file3= ''
+  var rowData = [
+    "'" + obj.data0,
+    obj.data1,
+    "'" + obj.data2,
+    obj.data3,
+    obj.data4,
+    "'" + obj.data5,
+    "'" + obj.data6,
+    idDate,
+    obj.data8,
+    "'" + obj.data9,
+    "'" + obj.data10,
+    "'" + obj.data11,
+    "'" + obj.data12,
+    obj.data13,
+    obj.data14,
+    "'" + obj.data15,
+    "'" + obj.data16,
+    "'" + obj.data17,
+    "'" + obj.data18,
+    "'" + obj.data19,
+    "'" + obj.data20,
+    "'" + obj.data21,
+    "'" + obj.data22,
+    "'" + obj.data23,
+    "'" + obj.data24,
+    "'" + obj.data25,
+    "'" + obj.data26,
+    "'" + obj.data27,
+    "'" + obj.data28,
+    "'" + obj.data29,
+    "'" + obj.data30,
+    "'" + obj.data31,
+    "'" + obj.data32,
+    obj.data33,
+    obj.data34,
+    obj.data35,
+    "'" + obj.data36,
+     obj.data37,
+    obj.data38,
+     obj.data39,
+    new Date(),
+  ];
+
+if (obj.imagedata) {
+    Object.keys(obj.imagedata).forEach(key => {
+      Logger.log(key)
+      let image = obj.imagedata[key]
+      let datafile = Utilities.base64Decode(image.data)
+      let blob = Utilities.newBlob(datafile, image.type, image.name);
+      file = folder.createFile(blob).getUrl()
+     rowData.push(file)
+    })
+  }
+
+  SpreadsheetApp.getActive().getSheets()[0].appendRow(rowData);
+  return true
+}
+
+/** PDF */
+/**library ID 1iePjnglUzelAuJJb-QykRcUUWYBSKiNGUWVljnNe03G9zWzSUGIRWLXa  (versi 63*/
+
+var sheetID = '1bFaZN3frezim0MoEQ8U2F93RO2xzKy_joTrF4W6a7Eo';// ID sheets
+var sheetName = "DataLembaga";// nama sheets
+
+
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
+}
+
+/**DataTable */
+function getData() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet()
+  var sheet = ss.getSheets()[0]
+  var range = sheet.getDataRange()
+  var values = range.getDisplayValues()
+  Logger.log(values)
+  return values
+}
