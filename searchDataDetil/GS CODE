@@ -1,0 +1,50 @@
+function doGet(e) {
+  return HtmlService
+    .createHtmlOutputFromFile('index.html')
+    .setTitle("FETCH Data BY ID");
+}
+
+function doGet(request) {
+  return HtmlService.createTemplateFromFile('index').evaluate()
+.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function submitDT(obj){
+  var ss = SpreadsheetApp.openById("1laIz5GuTSOgj51zBYowECcjBiFxAKzheDZOl62abUPg");
+  var sheet = ss.getSheetByName("Sheet1");
+  // MAKE SURE YOUR SHEET NAME IS "Sheet1"
+  // else change it as your sheet name is.
+  var  flag  =  1 ;
+  var lr = sheet.getLastRow();
+      for(var i = 1;i <= lr;i++){
+  var vid = sheet.getRange(i, 1).getValue();
+      if(vid ==obj){
+      flag = 0;
+  var b1 = sheet.getRange(i, 2).getValue();      
+  var b2 = sheet.getRange(i, 3).getValue();
+  var b3 = sheet.getRange(i, 4).getValue();
+  var b4 = sheet.getRange(i, 5).getValue();
+  var b5 = sheet.getRange(i, 6).getValue();
+  var b6 = sheet.getRange(i, 7).getValue();
+  var b7 = sheet.getRange(i, 8).getValue();
+  var b8 = sheet.getRange(i, 9).getValue();
+  var b9 = sheet.getRange(i, 10).getValue();
+  var b10 = sheet.getRange(i, 11).getValue();
+  var b11 = sheet.getRange(i, 12).getValue();
+  var b12 = sheet.getRange(i, 13).getValue();
+  var b13 = sheet.getRange(i, 14).getValue();
+  var b14 = sheet.getRange(i, 15).getValue();
+  var b15 = sheet.getRange(i, 16).getValue();
+  var b16 = sheet.getRange(i, 17).getValue();
+  var b17 = sheet.getRange(i, 18).getValue();
+  
+  var data ="<center><table><tr><th colspan=2>Detail Lembaga</th></tr><tr><td>NSM:</td><td>"
++obj+"</td></tr><tr><td>NPSN:</td><td>"+b1+"</td></tr><tr><td>Nama Lembaga:</td><td>"+b2+"</td></tr><tr><td>Jenjang:</td><td>"+b3+"</td></tr><tr><td>Status:</td><td>"+b4+"</td></tr><tr><td>Provinsi:</td><td>"+b5+"</td></tr><tr><td>Kota:</td><td>"+b6+"</td></tr><tr><td>Kecamatan:</td><td>"+b7+"</td></tr><tr><td>Alamat:</td><td>"+b8+"</td></tr><tr><td>Afliasi Organisasi:</td><td>"+b9+"</td></tr><tr><td>Jumlah Guru:</td><td>"+b10+"</td></tr><tr><td>Jumlah Tendik:</td><td>"+b11+"</td></tr><tr><td>Jumlah Siswa ( L ):</td><td>"+b12+"</td></tr><tr><td>Jumlah Siswi ( P ):</td><td>"+b13+"</td></tr><tr><td>Total KIP:</td><td>"+b15+"</td></tr><tr><td>Total KKS:</td><td>"+b16+"</td></tr><tr><td>Total PKH:</td><td>"+b17+"</td></tr></table></center>";
+  return data;
+    }
+   }
+     if(flag==1){
+  var data ="data tidak ditemukan cek kembali NSM lembaga Anda.";
+      return data;
+    } 
+    };
