@@ -1,0 +1,76 @@
+function doGet() {
+  return HtmlService.createTemplateFromFile('index')
+  .evaluate()
+  .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+  .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+}
+function submitData(obj){
+  var ss = SpreadsheetApp.openById("1GvCg8FUMXGXLbvDHhqANFVZt3WTppNf--BLTfFCwrmY");
+  var sheet = ss.getSheetByName("bukti");
+  var  flag  =  1 ;
+  var lr = sheet.getLastRow();
+      for(var i = 1;i <= lr;i++){
+  var id = sheet.getRange(i, 1).getValue();
+      if(id == obj){
+      flag = 0;
+  var colB = sheet.getRange(i, 2).getValue();      
+  var colC = sheet.getRange(i, 3).getValue();
+  var colD = sheet.getRange(i, 4).getValue();
+  var colE = sheet.getRange(i, 5).getValue();
+  var colF = sheet.getRange(i, 6).getValue();
+  var colG = sheet.getRange(i, 7).getValue();
+  var colH = sheet.getRange(i, 8).getValue();
+  var colAR = sheet.getRange(i, 44).getDisplayValue();
+  var colI = sheet.getRange(i, 9).getValue();
+  var colJ = sheet.getRange(i, 10).getValue();
+  var colK = sheet.getRange(i, 11).getValue();
+  var colL = sheet.getRange(i, 12).getValue();
+  var colM = sheet.getRange(i, 13).getValue();
+  var colAE = sheet.getRange(i, 31).getValue();
+  var colAF = sheet.getRange(i, 32).getValue();
+  var colAG = sheet.getRange(i, 33).getValue();
+  var colAH = sheet.getRange(i, 34).getValue();
+  var colAI = sheet.getRange(i, 35).getValue();
+  var colN = sheet.getRange(i, 14).getValue();
+  var colO = sheet.getRange(i, 15).getValue();
+  var colP = sheet.getRange(i, 16).getValue();
+  var colQ = sheet.getRange(i, 17).getValue();
+  var colR = sheet.getRange(i, 18).getValue();
+  var colS = sheet.getRange(i, 19).getValue();
+  var colT = sheet.getRange(i, 20).getValue();
+  var colU = sheet.getRange(i, 21).getValue();
+  var colV = sheet.getRange(i, 22).getValue();
+  var colW = sheet.getRange(i, 23).getValue();
+  var colX = sheet.getRange(i, 24).getValue();
+  var colY = sheet.getRange(i, 25).getValue();
+  var colZ = sheet.getRange(i, 26).getValue();
+  var colAA = sheet.getRange(i, 27).getValue();
+  var colAB = sheet.getRange(i, 28).getDisplayValue();
+  var colAC = sheet.getRange(i, 29).getDisplayValue();
+  var colAD = sheet.getRange(i, 30).getDisplayValue();
+  var colAE = sheet.getRange(i, 31).getDisplayValue();
+  var colAF = sheet.getRange(i, 32).getDisplayValue();
+  var colAG = sheet.getRange(i, 33).getDisplayValue();
+  var colAH = sheet.getRange(i, 34).getDisplayValue();
+  var colAI = sheet.getRange(i, 35).getDisplayValue();
+  var colAJ = sheet.getRange(i, 36).getDisplayValue();
+  var colAK = sheet.getRange(i, 37).getDisplayValue();
+  var colAL = sheet.getRange(i, 38).getDisplayValue();
+  var colAM = sheet.getRange(i, 39).getDisplayValue();
+  var colAN = sheet.getRange(i, 41).getDisplayValue();
+  var colAO = sheet.getRange(i, 42).getDisplayValue();
+  var colAS = sheet.getRange(i, 45).getDisplayValue();
+  var colAU = sheet.getRange(i, 47).getDisplayValue();
+  var colAV = sheet.getRange(i, 48).getDisplayValue();
+  var colAW = sheet.getRange(i, 49).getDisplayValue();
+
+  var data ="<center>`<table><tr><th colspan=2><img src='https://drive.google.com/uc?id=12YGB0j2Dhp6PKTCWyLgtCP32lNHNmNKM'style='width:100px;margin-top:8px'><br><h3>KEMENTERIAN AGAMA KOTA SURABAYA</h3>  <h3></h3><h3>  "+colAW+"</h3>    <h3></h3><h3>PROFIL "+colAV+"</h3>  <hr><hr>  </th></tr> <tr><th colspan=2><h5><br><br>DATA LEMBAGA</h5></th></tr>  <tr><td>NSM </td><td> : "+obj+"</td></tr>   <tr><td>NPSN </td><td> : "+colC+"</td></tr>   <tr><td>Nama Lembaga </td><td> : "+colB+"</td></tr>   <tr><td>Jenjang </td><td> : "+colD+"</td></tr>      <tr><td>Nama Yayasan/ Instansi Pembina </td><td> : "+colE+"</td></tr>         <tr><td>Nama Kepala Madrasah </td><td> : "+colF+"</td></tr>   <tr><td>Tgl Pendirian </td><td> : "+colAS+"</td></tr>        <tr><td>Status Madrasah </td><td> : "+colI+"</td></tr>        <tr><td>Status Akreditasi </td><td> : "+colJ+"</td></tr>       <tr><td>Predikat Akreditasi </td><td> : "+colK+"</td></tr>      <tr><td>Tahun Akreditasi </td><td> : "+colL+"</td></tr>      <tr><td>Jumlah Rombel </td><td> : "+colM+"</td></tr>   <tr><td>Email Lembaga </td><td> : "+colN+"</td></tr>     <tr><th colspan=2><h5><br><br>KEADAAN SISWA/I</h5></th></tr>     <tr><td>Menerima BOS/ BOP </td><td> : "+colO+"</td></tr>          <tr><td>Jumlah Rombel </td><td> : "+colM+"</td></tr>      <tr><td>Jumlah Siswa Laki-laki </td><td> : "+colP+"</td></tr>    <tr><td>Jumlah Siswa Perempuan </td><td> : "+colQ+"</td></tr>     <tr><td>Total Siswa/i </td><td> : "+colR+"</td></tr>        <tr><td>Total PIP </td><td> : "+colS+"</td></tr>        <tr><td>Total KKS </td><td> : "+colT+"</td></tr>        <tr><td>Total PKH </td><td> : "+colU+"</td></tr>   <tr><th colspan=2><h5><br><br>KEADAAN GURU DAN TENDIK</h5></th></tr>        <tr><td>Guru PNS Laki-laki </td><td> : "+colV+"</td></tr>           <tr><td>Guru PNS Perempuan </td><td> : "+colW+"</td></tr>       <tr><td>Guru Non PNS Laki-laki </td><td> : "+colX+"</td></tr>        <tr><td>Guru Non PNS Perempuan </td><td> : "+colY+"</td></tr>         <tr><td>Guru Sertifikasi </td><td> : "+colAA+"</td></tr>   <tr><td>Guru Belum Sertifikasi </td><td> : "+colAB+"</td></tr>      <tr><td>Total Guru </td><td> : "+colZ+"</td></tr>         <tr><td>Tendik PNS Laki-laki </td><td> : "+colAC+"</td></tr>         <tr><td>Tendik PNS Perempuan </td><td> : "+colAD+"</td></tr>         <tr><td>Tendik Non PNS Laki-laki </td><td> : "+colAE+"</td></tr>         <tr><td>Tendik Non PNS Perempuan </td><td> : "+colAF+"</td></tr>          <tr><td>Total Tendik </td><td> : "+colAG+"</td></tr>         <tr><td>Nama Pengawas Madrasah </td><td> : "+colAM+"</td></tr>       <tr><td>Alamat </td><td> : "+colAL+", "+colAI+", "+colAH+", "+colAK+"</td></tr>   </table></center>   <tr><td>  </td><td>  <table><br><p>Saya yang bertanda tangan dibawah ini, Kepala "+colB+"  Kecamatan "+colAI+" telah melakukan updating data lembaga dan menyatakan jika data yang tertera adalah yang sebenarnya.</p></td></tr>  <p> <tr><td> Mengetahui, <br>Pengawas "+colD+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Surabaya, "+colAR+"  <br> Kepala "+colB+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<tr><td><br><br><br><br>    "+colAM+"   </td><td> <br><br><br><br>   "+colAU+" </td></table>`   </p> <br/><br/><br/><p>Catatan : <br> Update Data Berdasarkan Hasil Isian Lembaga pada Tanggal "+colAR+" </p></tr>     "; 
+  
+  return data;
+    }
+   }
+      if(flag==1){
+  var data ="data tidak ditemukan cek kembali NSM lembaga Anda.";
+      return data;
+    } 
+    };
