@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400&display=swap" rel="stylesheet">
+    <link href="https://ltschool.web.app/css/Bootstrapcolor.css" rel="stylesheet" type="text/css">
+  <style>
+#samh{background-color:#7AD9F5;border:1px solid #0C99C1;border-radius:5px;padding:15px}
+#kemenag{background-color:#FFF3E6;border:1px solid #F6D887;border-radius:5px;padding:15px}
+#pendmasby{background-color:#FFC3C3;border:1px solid #F47C7C;border-radius:5px;padding:15px}
+#samhidayat{background-color:#C8E3D4;border:1px solid #87AAAA;border-radius:5px;padding:15px}
+#pendma{background-color:#FAF0D7;border:1px solid #FFD9C0;border-radius:5px;padding:15px}
+
+    body {
+      font-family: 'Prompt';
+       font-size: 14px;
+    }
+
+    .form-control:focus {
+      border-color: #6265e4 !important;
+      box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
+    }
+  </style>
+</head>
+
+<body>
+   <!-- <div class="container">
+    <div class="row"> -->
+      <div class="col-md-12 mx-auto">
+        <div class="card">
+          <!-- <div class="card-header h5 bg-primary text-white text-center">
+            <i class="fas fa-sign-in-alt"></i> Formulir</div>   -->
+            <!-- <button type="botton" class="btn btn-warning" onclick="godatatable()"><i class="fas fa-table"></i> Data Tabel</button> -->
+          <div class="card-body">
+            <!-- <h5 class="card-title text-center"><i class="fas fa-thumbs-up"></i> ..Formulir ini sangat berguna karena menggabungkan semua jenis input dan dapat diterapkan dalam banyak cara.</h5> -->
+            <div class="container">
+              <div class="bg-white">
+                <!-- <div class="row"> -->
+
+                <div class="col-md-12">
+                  <!-- -------------------------------Data Awal------------------------------------------ -->
+                
+                  <center><div id="samh">DATA LEMBAGA</div></center><br><br>
+                  <form id="myForm" onsubmit="submitForm()">
+                  <!-- <p class="h3 mb-4 text-center"><i class="fas fa-chalkboard-teacher"></i> Welcome to Form</p> -->
+                    <div class="row mb-2">
+                      <div class="form-group col-md-4">
+                        <label for="NSM"><i class="fas fa-sort-numeric-up"></i> NSM Lembaga</label>
+                        <input type="text" minlength="12" maxlength="12" class="form-control" id="data0" placeholder="NSM Lembaga" required>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="first_name"><i class="fas fa-warehouse"></i> Nama Lembaga</label>
+                        <input type="text" class="form-control"  id="data1"  placeholder=" Nama Lembaga" required>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="NPSN"><i class="fas fa-sort-numeric-up"></i> NPSN</label>
+                        <input type="text" minlength="8" maxlength="8" class="form-control" id="data2" placeholder="NPSN Lembaga" required>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="JenisSekolah"><i class="fas fa-chart-line"></i> Jenjang</label>
+                        <select id="data3" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="RA">RA</option>
+                            <option value="MI">MI</option>
+                            <option value="MTs">MTs</option>
+                            <option value="MA">MA</option>
+                          </select>
+                      </div>
+                      <!-- -------------------------------Nama Lembaga & NSM------------------------------------------ -->
+                      <!-- <div class="row  my-3"> -->
+                      <div class="form-group col-md-4">
+                        <label for="namayayasan"><i class="fa-regular fa-building"></i> Nama Instansi/ Yayasan Pembina</label>
+                        <input type="text" class="form-control"  id="data4"  placeholder=" Nama Instansi/ Yayasan Pembina" required>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="namakamad1"><i class="fa-solid fa-user-tie"></i> Nama Kepala Madrasah</label>
+                        <input type="text" class="form-control" id="data5" placeholder="Tanpa Title" required>
+                      </div>
+                    </div>
+                    <!-- -------------------------------Tempat dan Tgl Lahir------------------------------------------ -->
+                    <div class="row  mb-2">
+                      <div class="form-group col-md-4">
+                        <label for="namaopm1"><i class="fa-solid fa-house-medical-circle-check"></i> No Piagam Ijin Operasional</label>
+                        <input type="text" class="form-control"  id="data6"  placeholder=" No Piagam Ijin Operasional" required></div>
+
+                        <div class="form-group col-md-4">
+                        <label for="thpendirian"><i class="fa-solid fa-calendar-days"></i> Tgl Pendirian</label>
+                        <input type="date" class="form-control"  id="data7"  placeholder=" Tgl Pendirian" required></div>
+
+                      <div class="form-group col-md-4">
+                        <label for="statusmad"><i class="fa-solid fa-check-double"></i> Status Maddrasah</label>
+                        <select id="data8" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="Negeri">Negeri</option>
+                            <option value="Swasta">Swasta</option>
+                          </select>
+                      </div>
+                      
+                    </div>
+                    <!-- --------------Anak ke + Jumlah Saudara + Tmp Tinggal-------------- -->
+                    <div class="row  mb-2">
+                    <div class="form-group col-md-4">
+                        <label for="statusakreditasi"><i class="fa-solid fa-check-to-slot"></i> Status Akreditasi</label>
+                        <select id="data9" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="Sudah">Sudah</option>
+                            <option value="Belum">Belum</option>
+                          </select>
+                      </div>
+                       <div class="form-group col-md-4">
+                        <label for="predikatakreditasi"><i class="fa-solid fa-spell-check"></i> Predikat Akreditasi</label>
+                        <select id="data10" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="--">---</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="tahunakreditasi"><i class="fa-solid fa-calendar-week"></i> Tahun Akreditasi</label>
+                        <select id="data11" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="--">---</option>
+                          </select>
+                      </div>
+                      </div>
+
+                    <div class="row  mb-2">
+                       <div class="form-group col-md-12">
+                        <label for="email"><i class="fa-solid fa-envelope"></i> Email </label>
+                        <input type="email" class="form-control"  id="data13"  placeholder=" Email Lembaga" required>
+                      </div>  
+
+                      <p><center><div id="samhidayat">KEADAAN SISWA/I</div></center></p>
+                      <div class="row  mb-2">
+                    <div class="form-group col-md-6">
+                        <label for="danabos"><i class="fa-solid fa-sack-dollar"></i> Menerima BOS/BOP</label>
+                        <select id="data14" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="Ya">Ya</option>
+                            <option value="Tidak">Tidak</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="rombel1"><i class="fas fa-sort-numeric-up"></i> Jumlah Rombel</label>
+                        <input type="text" minlength="1" maxlength="2" class="form-control" id="data12" placeholder="Jumlah Rombel " required>
+                      </div>  
+                                      <div class="form-group col-md-4">
+                        <label for="siswa1"><i class="fa-solid fa-child"></i> Jumlah Siswa Laki-laki</label>
+                        <input type="number" minlength="16" maxlength="16" class="form-control" id="data15" placeholder="Jumlah Siswa Laki-laki" required>
+                      </div>  
+                                      
+                      <div class="form-group col-md-4">
+                        <label for="siswa2"><i class="fa-solid fa-child-dress"></i> Jumlah Siswa Perempuan</label>
+                        <input type="number" class="form-control"  id="data16"  placeholder=" Jumlah Siswa Perempuan" required></div>
+
+                        <div class="form-group col-md-4">
+                        <label for="totalsiswa"><i class="fa-solid fa-children"></i> Total Siswa/i</label>
+                        <input type="number" class="form-control"  id="data17" placeholder=" Total Siswa/i" required>
+                      </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="totalpip"><i class="fa-solid fa-children"></i> Total Penerima PIP</label>
+                        <input type="number" class="form-control"  id="data18" placeholder=" Isikan angka nol jika tidak ada" required>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="totalkks"><i class="fa-solid fa-children"></i> Total Penerima KKS</label>
+                        <input type="number" class="form-control"  id="data19" placeholder=" Isikan angka nol jika tidak ada" required>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="totalpkh"><i class="fa-solid fa-children"></i> Total Penerima PKH</label>
+                        <input type="number" class="form-control"  id="data20" placeholder=" Isikan angka nol jika tidak ada" required>
+                      </div>
+
+                  <p><center><div id="pendmasby">KEADAAN GURU DAN TENDIK (GTK)</div></center></p>
+    
+                    <div class="row  mb-2">
+                    <div class="form-group col-md-6">
+                     <label for="gurupnslk"><i class="fa-solid fa-circle-user"></i> Jumlah Guru PNS Laki-laki</label>
+                        <input type="number" class="form-control"  id="data21" placeholder=" isi angka nol jika tidak ada" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                     <label for="gurupnspr"><i class="fa-regular fa-circle-user"></i> Jumlah Guru PNS Perempuan</label>
+                        <input type="number" class="form-control"  id="data22" placeholder=" isi angka nol jika tidak ada" required>
+                      </div>
+                      </div>
+                       
+                      <div class="form-group col-md-6">
+                     <label for="gurunonpnslk"><i class="fa-solid fa-user"></i> Jumlah Guru Non PNS Laki-laki</label>
+                        <input type="number" class="form-control"  id="data23" placeholder=" Jumlah Guru Non PNS Laki-laki" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                     <label for="gurunonpnspr"><i class="fa-regular fa-user"></i> Jumlah Guru Non PNS Perempuan</label>
+                        <input type="number" class="form-control"  id="data24" placeholder=" Jumlah Guru Non PNS Perempuan" required>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                     <label for="totalguru1"><i class="fa-solid fa-user-group"></i> Total Guru</label>
+                        <input type="number" class="form-control"  id="data25" placeholder=" Total Seluruh Guru" required>
+                      </div>
+                       </div>
+
+                      <div class="row  mb-2">
+                      <div class="form-group col-md-6">
+                     <label for="guruserti1"><i class="fa-solid fa-certificate"></i> Jumlah Guru Sertifikasi</label>
+                        <input type="number" class="form-control"  id="data26" placeholder="  Jumlah Guru Bersertifikat Pendidik" required>
+                      </div>
+
+                  <div class="form-group col-md-6">
+                     <label for="gurubelumserti1"><i class="fa-brands fa-centos"></i> Jumlah Guru Belum Sertifikasi</label>
+                  <input type="number" class="form-control"  id="data27" placeholder="  Jumlah Guru Belum Bersertifikat Pendidik" required>
+                      </div>
+                      </div>
+
+                    <div class="row  mb-2">
+                      <div class="form-group col-md-6">
+                     <label for="tendikpnslk"><i class="fa-solid fa-user-clock"></i> Jumlah Tendik PNS Laki-laki</label>
+                        <input type="number" class="form-control"  id="data28" placeholder="  isi angka nol jika tidak ada" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                     <label for="tendikpnspr"><i class="fa-solid fa-person-dress-burst"></i> Jumlah Tendik PNS Perempuan</label>
+                        <input type="number" class="form-control"  id="data29" placeholder="  isi angka nol jika tidak ada" required>
+                      </div>
+                    
+                    <div class="form-group col-md-6">
+                     <label for="tendiknonpnslk"><i class="fa-solid fa-user-gear"></i> Jumlah Tendik Non PNS Laki-laki</label>
+                        <input type="number" class="form-control"  id="data30" placeholder="  Jumlah Tendik Non PNS Laki-laki" required>
+                      </div>
+                    
+                      <div class="form-group col-md-6">
+                     <label for="tendiknonpnspr"><i class="fa-solid fa-clipboard-user"></i> Jumlah Tendik Non PNS Perempuan</label>
+                        <input type="number" class="form-control"  id="data31" placeholder="  Jumlah Tendik Non PNS Perempuan" required>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                     <label for="totaltendik1"><i class="fa-solid fa-users"></i> Total Seluruh Tendik</label>
+                        <input type="number" class="form-control"  id="data32" placeholder="  Total Seluruh Tendik" required>
+                      </div>
+                      </div>
+
+                  <!-- -------------------------------Address------------------------------------------ -->
+                  <p><center><div id="kemenag">ALAMAT LEMBAGA</div></center></p>
+                    <div class="row  mb-2">
+                    <div class="form-group col-md-6">
+                        <label for="KotaKab"><i class="fa-solid fa-signs-post"></i> Kota/ Kab</label>
+                        <input type="text" class="form-control"  id="data33"  placeholder="Kota/ Kab" required>
+                      </div>                      
+
+                    <div class="form-group col-md-6">
+                        <label for="kec"><i class="fas fa-map"></i> Kecamatan</label>
+                        <input type="text" class="form-control"  id="data34"  placeholder="kecamatan" required>
+                      </div>
+                      </div>
+
+                      <div class="row  mb-2">
+                      <div class="form-group col-md-6">
+                        <label for="kel"><i class="fas fa-location"></i> Kelurahan</label>
+                        <input type="text" class="form-control"  id="data35"  placeholder="Kelurahan" required>
+                      </div>
+                      
+
+                      <div class="form-group col-md-6">
+                        <label for="kp"><i class="fas fa-list-ol"></i> Kode Pos</label>
+                        <input type="text" minlength="5" maxlength="5" class="form-control"  id="data36"  placeholder="kode pos" required>
+                      </div>
+                      </div>
+
+                    <div class="row mb-2">
+                    <div class="form-group mb-2">
+                      <label for="address"><i class="fas fa-address-card"></i> alamat</label>
+                      <textarea class="form-control" rows="3" id="data37" placeholder="alamat" required></textarea>
+                    </div>
+                    </div>
+
+                    <!-- -------------------------------Wali------------------------------------------ -->
+                    <div class="form-group col-md-12">
+                        <label for="pengawas1"><i class="fa-regular fa-eye"></i> Nama Pengawas Madrasah</label>
+                        <select id="data38" class="form-control" required>
+                            <option selected disabled value="">pilih..</option>
+                            <option value="WAHYU">WAHYU</option>
+                            <option value="MUNIARTI">MUNIARTI</option>
+                            <option value="SAFIIH">SAFIIH</option>
+                            <option value="HUSNUL UMAMI">HUSNUL UMAMI</option>
+                            <option value="SUWIDIYONO">SUWIDIYONO</option>
+                            <option value="AHMAD YANI RIFA'I">AHMAD YANI RIFA'I</option>
+                            <option value="SRI MULYANINGSIH">SRI MULYANINGSIH</option>
+                            <option value="AMINATAM">AMINATAM</option>
+                            <option value="HENNY SUHARTI">HENNY SUHARTI</option>
+                            <option value="MASHUDI">MASHUDI</option>
+                            <option value="ANI HARYANTI">ANI HARYANTI</option>
+                            <option value="MUHAMMAD SALEH MASYHUR">MUHAMMAD SALEH MASYHUR</option>
+                            <option value="NUR IDAYATI">NUR IDAYATI</option>
+                            <option value="SU'UD">SU'UD</option>
+                            <option value="UMI KULSUM">UMI KULSUM</option>
+                            <option value="DWI RISTINA">DWI RISTINA</option>
+                          </select>
+                      </div>
+            
+                    <!-- -------------------------------Upload Berkas------------------------------------------ -->
+                     <p><center><div id="samhidayat">UPLOAD BERKAS</div></center></p><p></p><br>
+
+                      <div class="row mb-2">
+                      <div class="form-group col-md-6">
+                        <label for="formFile" class="form-label"><i class="fas fa-upload"></i> Kirim BAP EMIS</label>
+                        <input class="form-control" type="file" accept="application/pdf" name="uploadfile" id="file" required>
+                      
+                      <!--batasi ukuran file yg diunggah-->
+                      <script>
+                      var uploadField = document.getElementById("file");
+                      uploadField.onchange = function() {
+                          if(this.files[0].size > 1000000){
+                            alert("Maaf! Max. Ukuran file 1 Mb");
+                            this.value = "";
+                          };
+                      };
+                      </script>     
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="formFile1" class="form-label"><i class="fas fa-upload"></i> Kirim Scan IJOP</label>
+                        <input class="form-control" type="file" accept="application/pdf" name="uploadfile1" id="file1" required>
+                      <script>
+                      var uploadField = document.getElementById("file1");
+                      uploadField.onchange = function() {
+                          if(this.files[0].size > 1000000){
+                            alert("Maaf! Max. Ukuran file 1 Mb");
+                            this.value = "";
+                          };
+                      };
+                      </script>     
+                      </div>
+                      
+
+                      
+                      <div class="form-group col-md-6">
+                      <label for="formFile2" class="form-label"><i class="fas fa-upload"></i> Kirim Data Siswa/i</label>
+                        <input class="form-control" type="file" accept=".xls,.xlsx" name="uploadfile2" id="file2" required>
+                      <script>
+                      var uploadField = document.getElementById("file2");
+                      uploadField.onchange = function() {
+                          if(this.files[0].size > 1000000){
+                            alert("Maaf! Max. Ukuran file 1 Mb");
+                            this.value = "";
+                          };
+                      };
+                      </script>     
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="formFile3" class="form-label"><i class="fas fa-upload"></i> Kirim Data Guru</label>
+                        <input class="form-control" type="file" accept=".xls,.xlsx" name="uploadfile3" id="file3" required>
+                      <script>
+                      var uploadField = document.getElementById("file3");
+                      uploadField.onchange = function() {
+                          if(this.files[0].size > 1000000){
+                            alert("Maaf! Max. Ukuran file 1 Mb");
+                            this.value = "";
+                          };
+                      };
+                      </script>     
+                      </div>
+                      </div>
+                      
+                 
+                    
+                    <!-- -------------------------------pernyataan------------------------------------------ -->
+
+                    <div class="form-group mb-2">
+                      <label for="pernyataan"></i> </label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="data39" type="checkbox" id="id1" value="Saya selaku pengelolah data lembaga telah melengkapi form serta menyatakan bahwa data yang tertera diatas adalah yang sebenarnya" required>
+                        <label class="form-check-label" for="pernyataan">Saya selaku pengelolah data lembaga telah melengkapi form serta menyatakan bahwa data yang tertera diatas adalah yang sebenarnya</label>
+                      </div>
+                    </div>
+                  <!-- -------------------------------kirim berkas------------------------------------------ -->
+
+            <div class="form-group text-center mb-2 mx-auto">
+         <button type="submit" class="btn btn-primary" id="btn1"><i class="fa-solid fa-paper-plane"></i> Submit</button> 
+            <!-- <br><div class="card-footer bg-success text-center text-white"> DITUTUP </div> -->
+                    </div>
+                  </form>
+                  <!-- -------------------------------no data------------------------------------------ -->
+                </div>
+              </div>
+            </div>
+          </div>
+         <br><div class="card-footer bg-dark text-center text-white">With <i class="fa-solid fa-heart"></i>
+            Pendma Kota Surabaya </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- -------------------------------JAVASCRIPT------------------------------------------ -->
+  <script>
+    let imagedata ={}
+    $('input[type="file"]').on('change',function(){
+      let files = []
+      for(var i=0; i<$(this)[0].files.length; i++){
+         files.push($(this)[0].files[i])
+      }
+      files.forEach((file,i)=>{
+        let reader = new FileReader()
+        reader.onloadend = (e)=>{
+          imagedata[$(this).attr('id')+(i+1)]={
+            data:e.target.result.split(',')[1],
+            name:file.name,
+            type:file.type
+          }
+        }
+        reader.readAsDataURL(file)
+      })
+    })
+
+      function submitForm(obj) { 
+        $.LoadingOverlay("show", {image:"",
+        fontawesome:"fa fa-spinner fa-spin fa-xs",
+        fontawesomeAnimation    : "rotate_right 1.5s",
+        text: ""        
+        }); 
+        event.preventDefault();
+        $('#btn1').hide()
+        $('#btn2').show()
+
+        var obj = {}
+        obj.data0 = $('#data0').val()
+        obj.data1 = $('#data1').val()
+        obj.data2 = $('#data2').val()
+        obj.data3 = $('#data3').val()
+        obj.data4 = $('#data4').val()
+        obj.data5 = $('#data5').val()
+        obj.data6 = $('#data6').val()
+        obj.data7 = $('#data7').val()
+        //let tmp = [] // opsi checkbox
+        //$('input[name="data7"]:checked').each((i,ele)=>{tmp.push($(ele).val())})
+        obj.data8 = $('#data8').val()
+        obj.data9 = $('#data9').val()
+        obj.data10 = $('#data10').val()
+        obj.data11 = $('#data11').val()
+        obj.data12 = $('#data12').val()
+        obj.data13 = $('#data13').val()
+        obj.data14 = $('#data14').val()
+        obj.data15 = $('#data15').val()
+        obj.data16 = $('#data16').val()
+        obj.data17 = $('#data17').val()
+        obj.data18 = $('#data18').val()
+        obj.data19 = $('#data19').val()
+        obj.data20 = $('#data20').val()
+        obj.data21 = $('#data21').val()
+        obj.data22 = $('#data22').val()
+        obj.data23 = $('#data23').val()
+        obj.data24 = $('#data24').val()
+        obj.data25 = $('#data25').val()
+        obj.data26 = $('#data26').val()
+        obj.data27 = $('#data27').val()
+        obj.data28 = $('#data28').val()
+        obj.data29 = $('#data29').val()
+        obj.data30 = $('#data30').val()
+        obj.data31 = $('#data31').val()
+        obj.data32 = $('#data32').val()
+        obj.data33 = $('#data33').val()
+        obj.data34 = $('#data34').val()
+        obj.data35 = $('#data35').val()
+        obj.data36 = $('#data36').val()        
+        obj.data37 = $('#data37').val()
+        obj.data38 = $('#data38').val()
+        obj.data39 = $('input[name="data39"]:checked').val()// opsi radiobox
+
+        obj.imagedata = imagedata
+        savedata(obj)
+       }
+
+// Ketika file berhasil disimpan
+    function savedata(obj){
+        google.script.run.withSuccessHandler(function (success) {
+          document.getElementById("myForm").reset()
+          $('#btn1').show()
+          $('#btn2').hide()
+          $('#form2').hide()
+          $('#form1').show()
+          $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin fa-xs"}); 
+           google.script.run.withSuccessHandler(showTable).getData();
+           $.LoadingOverlay("hide"); 
+            })
+            .saveData(obj);
+    }
+
+// Kelola opsi kotak centang untuk memilih kotak sebanyak yang Anda inginkan.
+    $(function(){
+    var checkboxes = $(':checkbox[required]');
+    checkboxes.change(function(){
+      if(checkboxes.is(':checked')) {
+          checkboxes.removeAttr('required');
+        }
+        else {
+          checkboxes.attr('required', 'required');
+        }
+    });
+});
+
+ function success(){
+  $('#form2').hide()
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $('#form1').offset().top
+  },500)
+  $('#form1').show()
+  }
+
+
+
+function godatatable(){
+  $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin fa-xs"}); 
+  $('#form1').show()
+  $('#form2').hide()
+  $.LoadingOverlay("hide");  
+  google.script.run.withSuccessHandler(showTable).getData();
+
+}
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+</body>
+
+</html>
