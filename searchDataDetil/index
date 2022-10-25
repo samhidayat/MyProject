@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <base target="_top" />
+     <h2>Detail Lembaga</h2>
+     <style>
+input{
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+table {
+  font-family: times;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #969696;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f0efef;
+}
+</style>
+  </head>
+  <body align="center">
+    <input type="text"id="id" placeholder="Masukkan NSM"/></br>
+    <br>
+    <input type="submit" value="Lihat Data" onclick="info()"/>
+   
+    <div id="result"></div>
+    <script>
+      function  info () {
+        let txt = document.querySelector('#id').value;
+        let updateLocation = document.querySelector('#result');
+        //you can add other element here
+        updateLocation.innerHTML = "mengambil data...";
+
+        function onFailure(error){
+          let warning = "<span style='color:red'>"+error+"</span>";
+          updateLocation.innerHTML = warning;
+        };
+        
+        function onSuccess(response){
+          let result ="<span style='color:black'>"+response+"</span>";
+          updateLocation.innerHTML = result;
+
+        };
+        google.script.run.withFailureHandler(onFailure)
+                         .withSuccessHandler(onSuccess)
+                         .submitDT(txt);
+
+      };
+    </script>
+  </body>
+</html>
